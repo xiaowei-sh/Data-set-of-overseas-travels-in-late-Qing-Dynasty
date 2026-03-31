@@ -1,0 +1,106 @@
+// 蔡钧《出洋琐记》32站情绪阶梯图
+//https://echarts.apache.org/examples/zh/editor.html?c=line-step
+const data = [
+  [1, 8],   // 日本横滨港        调适与认同
+  [2, 2],   // 日本东京城        震惊与惊奇
+  [3, 2],   // 美国旧金山        震惊与惊奇
+  [4, 3],   // 美国芝加哥        羡慕与向往
+  [5, 8],   // 美国华盛顿        调适与认同
+  [6, 8],   // 英国利物浦        调适与认同
+  [7, 2],   // 英国伦敦          震惊与惊奇
+  [8, 8],   // 法国巴黎          调适与认同
+  [9, 8],   // 西班牙马德里      调适与认同
+  [10, 8],  // 西班牙辉儿士城    调适与认同
+  [11, 3],  // 西班牙制造局      羡慕与向往
+  [12, 8],  // 法国马赛港        调适与认同
+  [13, 8],  // 意大利拿波里城    调适与认同
+  [14, 2],  // 埃及宝赛港        震惊与惊奇
+  [15, 5],  // 英国亚丁据点      焦虑与忧思
+  [16, 8],  // 英国锡兰科伦坡    调适与认同
+  [17, 8],  // 英国新加坡        调适与认同
+  [18, 6],  // 法属西贡          质疑与批判
+  [19, 5],  // 中国香港          焦虑与忧思
+  [20, 8],  // 马德里欧扒拉戏园  调适与认同
+  [21, 8],  // 马德里勒低罗花园  调适与认同
+  [22, 8],  // 马德里士碧力园    调适与认同
+  [23, 2],  // 马德里斗牛场      震惊与惊奇
+  [24, 8],  // 马德里嘉那华会    调适与认同
+  [25, 2],  // 马德里贫民洗足会  震惊与惊奇
+  [26, 8],  // 巴黎珊思勒塞街    调适与认同
+  [27, 2],  // 伦敦冷恒寓馆      震惊与惊奇
+  [28, 2],  // 纽约第五街寓馆    震惊与惊奇
+  [29, 5],  // 埃及苏彝士运河    焦虑与忧思
+  [30, 5],  // 亚丁城酒馆        焦虑与忧思
+  [31, 5],  // 西贡堤岸戏园      焦虑与忧思
+  [32, 2]   // 新加坡恒心园      震惊与惊奇
+];
+
+option = {
+  title: {
+    text: 'Emotion Ladder Chart from "Overseas Travel Notes"',
+    subtext: 'Cai Jun · 32 Stations · One Emotion per Station',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'axis',
+    formatter: function (params) {
+      const idx = params[0].dataIndex;
+      const xy = params[0].data;
+      const map = {
+        1: 'Curiosity and Exploration',
+        2: 'Astonishment and Wonder',
+        3: 'Admiration and Yearning',
+        4: 'Indignation and Shame',
+        5: 'Anxiety and Concern',
+        6: 'Skepticism and Criticism',
+        7: 'Alienation and Rejection',
+        8: 'Adaptation and Acceptance'
+      };
+      return 'Sequence ' + xy[0] + '<br/>Emotion Value ' + xy[1] + ': ' + map[xy[1]];
+    }
+  },
+  grid: {
+    left: '10%',
+    right: '10%',
+    bottom: '15%'
+  },
+  xAxis: {
+    type: 'value',
+    name: 'Visit Sequence',
+    min: 1,
+    max: 32,
+    interval: 1
+  },
+  yAxis: {
+    type: 'value',
+    name: 'Emotion Category Value',
+    min: 1,
+    max: 8,
+    interval: 1,
+    axisLabel: {
+      formatter: function (v) {
+        const map = {
+          1: 'Curiosity',
+          2: 'Astonishment',
+          3: 'Admiration',
+          4: 'Indignation',
+          5: 'Anxiety',
+          6: 'Skepticism',
+          7: 'Alienation',
+          8: 'Adaptation'
+        };
+        return map[v] || '';
+      }
+    }
+  },
+  series: [{
+    name: 'Emotion Value',
+    type: 'line',
+    step: 'start',          // 阶梯线
+    data: data,
+    symbolSize: 6,
+    lineStyle: { width: 2 },
+    itemStyle: { color: '#5470c6' },
+    areaStyle: { opacity: 0.2 }
+  }]
+};

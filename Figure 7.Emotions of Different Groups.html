@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Group Emotion Category Radar Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+    <div id="main" style="width: 800px; height: 600px;"></div>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));
+
+        var option = {
+            title: {
+                text: 'Intellectual Elite Group vs Ordinary Literati Group Emotion Category Radar Chart',
+                textStyle: {          // 标题黑色
+                    color: '#000'
+                }
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                data: ['Intellectual Elite Group', 'Ordinary Literati Group'],
+                textStyle: {          // 图例黑色
+                    color: '#000'
+                }
+            },
+            radar: {
+                // 把雷达图各维度文字也设成黑色
+                name: {
+                    textStyle: {
+                        color: '#000'
+                    }
+                },
+                indicator: [
+                    { name: 'Adaptation and Acceptance', max: 1200 },
+                    { name: 'Astonishment and Wonder', max: 1200 },
+                    { name: 'Anxiety and Concern', max: 1000 },
+                    { name: 'Skepticism and Criticism', max: 400 },
+                    { name: 'Admiration and Yearning', max: 400 },
+                    { name: 'Curiosity and Exploration', max: 350 },
+                    { name: 'Alienation and Rejection', max: 50 },
+                    { name: 'Indignation and Shame', max: 120 }
+                ]
+            },
+            series: [{
+                name: 'Group Emotion Category',
+                type: 'radar',
+                data: [
+                    {
+                        value: [1096, 1089, 903, 378, 387, 315, 42, 105],
+                        name: 'Intellectual Elite Group'
+                    },
+                    {
+                        value: [604, 573, 441, 189, 216, 252, 21, 63],
+                        name: 'Ordinary Literati Group'
+                    }
+                ]
+            }]
+        };
+
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

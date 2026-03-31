@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Radar Chart Display</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff; /* 页面背景白色 */
+            color: #000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+        }
+        #main {
+            width: 800px;
+            height: 600px;
+            margin: 50px auto;
+            background: #fff; /* 图表容器白色背景 */
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="main"></div>
+    <script>
+        var identityData = {
+            'Diplomat': {'Administrative Center': 150, 'Entertainment Venue': 141, 'Cultural Venue': 141, 'Commercial Venue': 105, 'Industrial Site': 94, 'Port City': 86},
+            'Scholar': {'Educational Institution': 185, 'Industrial Site': 170, 'Cultural Venue': 53, 'Port City': 36, 'Private Venue': 29},
+            'Official': {'Industrial Site': 156, 'Educational Institution': 152, 'Port City': 118, 'Cultural Venue': 107, 'Residential Area': 83, 'Administrative Center': 73},
+            'Industrialist': {'Industrial Site': 21, 'Educational Institution': 10, 'Port City': 5, 'Cultural Organization': 4, 'Financial Institution': 3, 'Public Facility': 2},
+            'Politician': {'Administrative Center': 9, 'Port City': 8, 'Industrial Site': 7, 'Cultural Center': 6, 'Cultural Venue': 6, 'Residential Area': 4},
+            'Literati': {'Natural Scenic Area': 27, 'Administrative Center': 17, 'Port City': 16, 'Entertainment Venue': 14, 'Commercial Venue': 11, 'Residential Area': 11},
+            'Traveler': {'Administrative Center': 17, 'Port City': 8, 'Natural Scenic Area': 6, 'Cultural Center': 4, 'Residential Area': 3, 'Transportation Hub': 2},
+            'Student Abroad': {'Educational Institution': 10, 'Industrial Site': 2, 'Economic Center': 2, 'Administrative Center': 2, 'Transportation Venue': 1, 'Military Base': 1}
+        };
+
+        var locations = Array.from(new Set(Object.values(identityData).flatMap(obj => Object.keys(obj))));
+
+        var seriesData = Object.entries(identityData).map(([name, data]) => ({
+            name,
+            type: 'radar',
+            data: [{
+                name: name,
+                value: locations.map(loc => data[loc] || 0)
+            }]
+        }));
+
+        var chart = echarts.init(document.getElementById('main'));
+        var option = {
+            title: {
+                text: '',
+                left: 'center',
+                textStyle: { color: '#000' }
+            },
+            tooltip: {
+                trigger: 'item',
+                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                textStyle: { color: '#000' },
+                borderColor: '#ddd',
+                borderWidth: 1
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: Object.keys(identityData),
+                textStyle: { color: '#000' }
+            },
+            radar: {
+                indicator: locations.map(loc => ({ name: loc, max: 200 })),
+                shape: 'polygon',
+                splitNumber: 5,
+                name: {
+                    textStyle: { color: '#000', fontSize: 12 }
+                },
+                splitLine: {
+                    lineStyle: { color: '#ccc' }
+                },
+                splitArea: {
+                    show: true,
+                    areaStyle: {
+                        color: ['#f9f9f9', '#f0f0f0'] // 浅灰交替填充
+                    }
+                },
+                axisLine: {
+                    lineStyle: { color: '#999' }
+                }
+            },
+            series: seriesData
+        };
+
+        chart.setOption(option);
+    </script>
+</body>
+</html>

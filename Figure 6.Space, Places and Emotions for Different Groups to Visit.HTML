@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Late Qing Dynasty Overseas Travelogues "Identity-Emotion-Place Type" Sankey Diagram (with Data Labels)</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <style>
+        html,body,#main{width:100%;height:100%;margin:0;}
+    </style>
+</head>
+<body>
+<div id="main"></div>
+<script>
+/* ================ Hard-coded Flow Table (Same as Previous Version) ================= */
+const raw = [
+    // Official
+    {id:'Official',emo:'Adaptation and Acceptance',place:'Port City',v:620},
+    {id:'Official',emo:'Admiration and Yearning',place:'Industrial Site',v:387},
+    {id:'Official',emo:'Astonishment and Wonder',place:'Cultural Venue',v:298},
+    {id:'Official',emo:'Anxiety and Concern',place:'Political Venue',v:312},
+    {id:'Official',emo:'Astonishment and Wonder',place:'Religious Site',v:198},
+    {id:'Official',emo:'Anxiety and Concern',place:'Military Facility',v:176},
+    {id:'Official',emo:'Adaptation and Acceptance',place:'Educational Building',v:167},
+    {id:'Official',emo:'Astonishment and Wonder',place:'Historic Building',v:154},
+    {id:'Official',emo:'Astonishment and Wonder',place:'Exhibition Venue',v:132},
+    {id:'Official',emo:'Adaptation and Acceptance',place:'Transportation Hub',v:121},
+    {id:'Official',emo:'Adaptation and Acceptance',place:'Commercial Venue',v:110},
+    {id:'Official',emo:'Astonishment and Wonder',place:'Natural Scenic Area',v:99},
+    // Student Abroad
+    {id:'Student Abroad',emo:'Admiration and Yearning',place:'Educational Building',v:312},
+    {id:'Student Abroad',emo:'Admiration and Yearning',place:'Industrial Site',v:234},
+    {id:'Student Abroad',emo:'Astonishment and Wonder',place:'Cultural Venue',v:187},
+    {id:'Student Abroad',emo:'Astonishment and Wonder',place:'Port City',v:165},
+    {id:'Student Abroad',emo:'Astonishment and Wonder',place:'Exhibition Venue',v:143},
+    {id:'Student Abroad',emo:'Curiosity and Exploration',place:'Political Venue',v:121},
+    {id:'Student Abroad',emo:'Adaptation and Acceptance',place:'Commercial Venue',v:110},
+    {id:'Student Abroad',emo:'Astonishment and Wonder',place:'Historic Building',v:99},
+    {id:'Student Abroad',emo:'Astonishment and Wonder',place:'Religious Site',v:88},
+    {id:'Student Abroad',emo:'Astonishment and Wonder',place:'Natural Scenic Area',v:77},
+    {id:'Student Abroad',emo:'Adaptation and Acceptance',place:'Transportation Hub',v:66},
+    {id:'Student Abroad',emo:'Anxiety and Concern',place:'Military Facility',v:55},
+    // Traveler
+    {id:'Traveler',emo:'Astonishment and Wonder',place:'Natural Scenic Area',v:198},
+    {id:'Traveler',emo:'Astonishment and Wonder',place:'Port City',v:165},
+    {id:'Traveler',emo:'Astonishment and Wonder',place:'Cultural Venue',v:143},
+    {id:'Traveler',emo:'Astonishment and Wonder',place:'Religious Site',v:121},
+    {id:'Traveler',emo:'Astonishment and Wonder',place:'Historic Building',v:110},
+    {id:'Traveler',emo:'Adaptation and Acceptance',place:'Transportation Hub',v:99},
+    {id:'Traveler',emo:'Adaptation and Acceptance',place:'Commercial Venue',v:88},
+    {id:'Traveler',emo:'Curiosity and Exploration',place:'Industrial Site',v:77},
+    {id:'Traveler',emo:'Curiosity and Exploration',place:'Political Venue',v:66},
+    {id:'Traveler',emo:'Astonishment and Wonder',place:'Exhibition Venue',v:55},
+    {id:'Traveler',emo:'Curiosity and Exploration',place:'Educational Building',v:44},
+    {id:'Traveler',emo:'Anxiety and Concern',place:'Military Facility',v:33},
+    // Industrialist
+    {id:'Industrialist',emo:'Admiration and Yearning',place:'Industrial Site',v:387},
+    {id:'Industrialist',emo:'Admiration and Yearning',place:'Port City',v:234},
+    {id:'Industrialist',emo:'Adaptation and Acceptance',place:'Commercial Venue',v:176},
+    {id:'Industrialist',emo:'Admiration and Yearning',place:'Educational Building',v:154},
+    {id:'Industrialist',emo:'Astonishment and Wonder',place:'Cultural Venue',v:143},
+    {id:'Industrialist',emo:'Astonishment and Wonder',place:'Exhibition Venue',v:132},
+    {id:'Industrialist',emo:'Adaptation and Acceptance',place:'Transportation Hub',v:121},
+    {id:'Industrialist',emo:'Anxiety and Concern',place:'Political Venue',v:110},
+    {id:'Industrialist',emo:'Astonishment and Wonder',place:'Historic Building',v:99},
+    {id:'Industrialist',emo:'Astonishment and Wonder',place:'Natural Scenic Area',v:88},
+    {id:'Industrialist',emo:'Astonishment and Wonder',place:'Religious Site',v:77},
+    {id:'Industrialist',emo:'Anxiety and Concern',place:'Military Facility',v:66},
+    // Diplomat
+    {id:'Diplomat',emo:'Anxiety and Concern',place:'Political Venue',v:456},
+    {id:'Diplomat',emo:'Adaptation and Acceptance',place:'Port City',v:387},
+    {id:'Diplomat',emo:'Astonishment and Wonder',place:'Cultural Venue',v:298},
+    {id:'Diplomat',emo:'Astonishment and Wonder',place:'Historic Building',v:234},
+    {id:'Diplomat',emo:'Astonishment and Wonder',place:'Religious Site',v:198},
+    {id:'Diplomat',emo:'Adaptation and Acceptance',place:'Educational Building',v:176},
+    {id:'Diplomat',emo:'Astonishment and Wonder',place:'Exhibition Venue',v:165},
+    {id:'Diplomat',emo:'Adaptation and Acceptance',place:'Transportation Hub',v:154},
+    {id:'Diplomat',emo:'Adaptation and Acceptance',place:'Commercial Venue',v:143},
+    {id:'Diplomat',emo:'Astonishment and Wonder',place:'Industrial Site',v:132},
+    {id:'Diplomat',emo:'Astonishment and Wonder',place:'Natural Scenic Area',v:121},
+    {id:'Diplomat',emo:'Anxiety and Concern',place:'Military Facility',v:110},
+    // Literati
+    {id:'Literati',emo:'Astonishment and Wonder',place:'Cultural Venue',v:298},
+    {id:'Literati',emo:'Astonishment and Wonder',place:'Historic Building',v:234},
+    {id:'Literati',emo:'Astonishment and Wonder',place:'Religious Site',v:198},
+    {id:'Literati',emo:'Astonishment and Wonder',place:'Natural Scenic Area',v:176},
+    {id:'Literati',emo:'Astonishment and Wonder',place:'Port City',v:165},
+    {id:'Literati',emo:'Astonishment and Wonder',place:'Exhibition Venue',v:143},
+    {id:'Literati',emo:'Astonishment and Wonder',place:'Educational Building',v:132},
+    {id:'Literati',emo:'Skepticism and Criticism',place:'Political Venue',v:121},
+    {id:'Literati',emo:'Adaptation and Acceptance',place:'Commercial Venue',v:110},
+    {id:'Literati',emo:'Adaptation and Acceptance',place:'Transportation Hub',v:99},
+    {id:'Literati',emo:'Astonishment and Wonder',place:'Industrial Site',v:88},
+    {id:'Literati',emo:'Anxiety and Concern',place:'Military Facility',v:77},
+    // Scholar
+    {id:'Scholar',emo:'Astonishment and Wonder',place:'Educational Building',v:254},
+    {id:'Scholar',emo:'Astonishment and Wonder',place:'Cultural Venue',v:234},
+    {id:'Scholar',emo:'Astonishment and Wonder',place:'Historic Building',v:198},
+    {id:'Scholar',emo:'Astonishment and Wonder',place:'Religious Site',v:176},
+    {id:'Scholar',emo:'Astonishment and Wonder',place:'Natural Scenic Area',v:165},
+    {id:'Scholar',emo:'Astonishment and Wonder',place:'Port City',v:143},
+    {id:'Scholar',emo:'Astonishment and Wonder',place:'Exhibition Venue',v:132},
+    {id:'Scholar',emo:'Curiosity and Exploration',place:'Political Venue',v:121},
+    {id:'Scholar',emo:'Adaptation and Acceptance',place:'Commercial Venue',v:110},
+    {id:'Scholar',emo:'Adaptation and Acceptance',place:'Transportation Hub',v:99},
+    {id:'Scholar',emo:'Astonishment and Wonder',place:'Industrial Site',v:88},
+    {id:'Scholar',emo:'Anxiety and Concern',place:'Military Facility',v:77},
+    // Politician
+    {id:'Politician',emo:'Skepticism and Criticism',place:'Political Venue',v:365},
+    {id:'Politician',emo:'Adaptation and Acceptance',place:'Port City',v:298},
+    {id:'Politician',emo:'Astonishment and Wonder',place:'Cultural Venue',v:254},
+    {id:'Politician',emo:'Astonishment and Wonder',place:'Historic Building',v:234},
+    {id:'Politician',emo:'Astonishment and Wonder',place:'Religious Site',v:198},
+    {id:'Politician',emo:'Adaptation and Acceptance',place:'Educational Building',v:176},
+    {id:'Politician',emo:'Astonishment and Wonder',place:'Exhibition Venue',v:165},
+    {id:'Politician',emo:'Adaptation and Acceptance',place:'Transportation Hub',v:154},
+    {id:'Politician',emo:'Adaptation and Acceptance',place:'Commercial Venue',v:143},
+    {id:'Politician',emo:'Astonishment and Wonder',place:'Industrial Site',v:132},
+    {id:'Politician',emo:'Astonishment and Wonder',place:'Natural Scenic Area',v:121},
+    {id:'Politician',emo:'Anxiety and Concern',place:'Military Facility',v:110}
+];
+
+/* Construct ECharts Data */
+const links = [];
+const nodesSet = new Set();
+raw.forEach(l=>{
+    links.push({source: l.id, target: l.emo, value: l.v});
+    links.push({source: l.emo, target: l.place, value: l.v});
+    nodesSet.add(l.id);
+    nodesSet.add(l.emo);
+    nodesSet.add(l.place);
+});
+const data = [...nodesSet].map(name => ({name}));
+
+/* Colors: Identity (Cool Colors) → Emotion (Warm Colors) → Place Type (Gray Scale) */
+const colorMap = {
+    'Official':'#5470c6','Student Abroad':'#91cc75','Traveler':'#fac858','Industrialist':'#ee6666',
+    'Diplomat':'#73c0de','Literati':'#3ba272','Scholar':'#fc8452','Politician':'#9a60b4',
+    'Curiosity and Exploration':'#ffd93d','Astonishment and Wonder':'#ffb347','Admiration and Yearning':'#ff8c00',
+    'Indignation and Shame':'#e74c3c','Anxiety and Concern':'#d42c2c','Skepticism and Criticism':'#c0392b',
+    'Alienation and Rejection':'#a93226','Adaptation and Acceptance':'#27ae60',
+    'Port City':'#d3d3d3','Industrial Site':'#b0b0b0','Cultural Venue':'#999','Political Venue':'#888',
+    'Religious Site':'#777','Military Facility':'#666','Educational Building':'#555','Historic Building':'#444',
+    'Exhibition Venue':'#333','Transportation Hub':'#222','Commercial Venue':'#111','Natural Scenic Area':'#000'
+};
+data.forEach(n => n.itemStyle = {color: colorMap[n.name] || '#ccc'});
+
+/* ================ Key: Label Display Name + Data ================ */
+const myChart = echarts.init(document.getElementById('main'));
+const option = {
+    title: {text: 'Late Qing Dynasty Overseas Travelogues "Identity-Emotion-Place Type" Sankey Diagram (with Data Labels)', left: 'center'},
+    tooltip: {trigger: 'item', formatter: '{b}: {c}'},
+    series: [{
+        type: 'sankey',
+        layout: 'none',
+        emphasis: {focus: 'adjacency'},
+        data: data,
+        links: links,
+        orient: 'horizontal',
+        label: {
+            position: 'right',
+            fontSize: 11,
+            formatter: '{b} ({c})'   // ← Node label with data
+        },
+        lineStyle: {color: 'source', curveness: 0.5}
+    }]
+};
+myChart.setOption(option);
+window.addEventListener('resize', () => myChart.resize());
+</script>
+</body>
+</html>

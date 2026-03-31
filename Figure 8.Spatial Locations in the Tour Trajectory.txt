@@ -1,0 +1,206 @@
+option = {
+  series: {
+    type: 'sankey',
+    layout: 'none',
+    emphasis: { focus: 'adjacency' },
+    data: [
+      /*===== 时间段 =====*/
+      { name: '1840-1860 (67)' },
+      { name: '1861-1895 (2847)' },
+      { name: '1896-1911 (1616)' },
+
+      /*===== 1840-1860 属性 =====*/
+      { name: 'Military Industry (23)' },
+      { name: 'Religious Site (12)' },
+      { name: 'Industrial Site (11)' },
+      { name: 'Cultural Venue (8)' },
+      { name: 'Port City (6)' },
+
+      /*===== 1861-1895 属性 =====*/
+      { name: 'Military Industry (412)' },
+      { name: 'Industrial Site (308)' },
+      { name: 'Cultural Venue (276)' },
+      { name: 'Religious Site (259)' },
+      { name: 'Port City (198)' },
+
+      /*===== 1896-1911 属性 =====*/
+      { name: 'Industrial Site (285)' },
+      { name: 'Educational Institution (241)' },
+      { name: 'Military Industry (218)' },
+      { name: 'Cultural Venue (202)' },
+      { name: 'Religious Site (156)' },
+
+      /*===== 1840-1860 具体地名 =====*/
+      { name: 'Armstrong Shipyard (6)' },
+      { name: 'Vulcan Shipyard (5)' },
+      { name: 'Toulon Shipyard and Arsenal (4)' },
+      { name: 'Brussels Cavalry Camp (3)' },
+      { name: 'Berlin Kassel Camp (3)' },
+      { name: 'Paris Pantheon (4)' },
+      { name: 'London Westminster Abbey (3)' },
+      { name: 'Rome Colosseum (2)' },
+      { name: 'Venice St. Mark\'s Basilica (2)' },
+      { name: 'Florence Cathedral (2)' },
+      { name: 'Chicago Sawmill' },
+      { name: 'Krupp Gun Factory' },
+      { name: 'Cleveland Stone Sawmill' },
+      { name: 'London Crystal Palace' },
+      { name: 'Paris Wax Museum' },
+      { name: 'Marseille Port' },
+      { name: 'Port Said' },
+      { name: 'Aden Port' },
+
+      /*===== 1861-1895 具体地名 =====*/
+      { name: 'Krupp Gun Factory-1861' },
+      { name: 'Vulcan Shipyard-1861' },
+      { name: 'Armstrong Shipyard-1861' },
+      { name: 'Toulon Shipyard and Arsenal-1861' },
+      { name: 'Berlin Kassel Camp-1861' },
+      { name: 'Osaka Mint-1861' },
+      { name: 'Shanghai Manufacturing Bureau-1861' },
+      { name: 'Chicago Sawmill-1861' },
+      { name: 'Paris Jardin des Plantes-1861' },
+      { name: 'London Zoological Gardens-1861' },
+      { name: 'Paris Wax Museum-1861' },
+      { name: 'Berlin Wax Museum-1861' },
+      { name: 'Paris Pantheon-1861' },
+      { name: 'London St. Paul\'s Cathedral-1861' },
+      { name: 'Cologne Cathedral-1861' },
+      { name: 'Marseille Port-1861' },
+      { name: 'Liverpool Port-1861' },
+      { name: 'Yokohama Port-1861' },
+
+      /*===== 1896-1911 具体地名 =====*/
+      { name: 'Krupp Gun Factory-1896' },
+      { name: 'Osaka Mint-1896' },
+      { name: 'Tokyo Artillery Factory-1896' },
+      { name: 'Berlin Siemens Motor Factory-1896' },
+      { name: 'Shanghai Manufacturing Bureau-1896' },
+      { name: 'Tokyo University-1896' },
+      { name: 'Berlin University-1896' },
+      { name: 'Paris Sorbonne University-1896' },
+      { name: 'Oxford University-1896' },
+      { name: 'Kyoto Imperial University-1896' },
+      { name: 'Vulcan Shipyard-1896' },
+      { name: 'Osaka Kawasaki Ironworks-1896' },
+      { name: 'Tokyo Imperial Museum-1896' },
+      { name: 'Paris Military Museum-1896' },
+      { name: 'Berlin Wax Museum-1896' },
+      { name: 'Paris Pantheon-1896' },
+      { name: 'Tokyo Yasukuni Shrine-1896' },
+      { name: 'Cologne Cathedral-1896' }
+    ],
+    links: [
+      /*---------- 1840-1860 ----------*/
+      { source: '1840-1860 (67)', target: 'Military Industry (23)', value: 23 },
+      { source: '1840-1860 (67)', target: 'Religious Site (12)', value: 12 },
+      { source: '1840-1860 (67)', target: 'Industrial Site (11)', value: 11 },
+      { source: '1840-1860 (67)', target: 'Cultural Venue (8)', value: 8 },
+      { source: '1840-1860 (67)', target: 'Port City (6)', value: 6 },
+
+      { source: 'Military Industry (23)', target: 'Armstrong Shipyard (6)', value: 6 },
+      { source: 'Military Industry (23)', target: 'Vulcan Shipyard (5)', value: 5 },
+      { source: 'Military Industry (23)', target: 'Toulon Shipyard and Arsenal (4)', value: 4 },
+      { source: 'Military Industry (23)', target: 'Brussels Cavalry Camp (3)', value: 3 },
+      { source: 'Military Industry (23)', target: 'Berlin Kassel Camp (3)', value: 3 },
+
+      { source: 'Religious Site (12)', target: 'Paris Pantheon (4)', value: 4 },
+      { source: 'Religious Site (12)', target: 'London Westminster Abbey (3)', value: 3 },
+      { source: 'Religious Site (12)', target: 'Rome Colosseum (2)', value: 2 },
+      { source: 'Religious Site (12)', target: 'Venice St. Mark\'s Basilica (2)', value: 2 },
+      { source: 'Religious Site (12)', target: 'Florence Cathedral (2)', value: 2 },
+
+      { source: 'Industrial Site (11)', target: 'Chicago Sawmill', value: 4 },
+      { source: 'Industrial Site (11)', target: 'Krupp Gun Factory', value: 3 },
+      { source: 'Industrial Site (11)', target: 'Cleveland Stone Sawmill', value: 2 },
+      { source: 'Industrial Site (11)', target: 'London Crystal Palace', value: 2 },
+      { source: 'Industrial Site (11)', target: 'Paris Wax Museum', value: 2 },
+
+      { source: 'Cultural Venue (8)', target: 'London Crystal Palace', value: 3 },
+      { source: 'Cultural Venue (8)', target: 'Paris Wax Museum', value: 2 },
+      { source: 'Cultural Venue (8)', target: 'Rome Colosseum', value: 2 },
+      { source: 'Cultural Venue (8)', target: 'Venice St. Mark\'s Basilica', value: 2 },
+      { source: 'Cultural Venue (8)', target: 'Florence Cathedral', value: 2 },
+
+      { source: 'Port City (6)', target: 'Marseille Port', value: 3 },
+      { source: 'Port City (6)', target: 'Port Said', value: 2 },
+      { source: 'Port City (6)', target: 'Aden Port', value: 2 },
+      { source: 'Port City (6)', target: 'Marseille Port', value: 2 },
+      { source: 'Port City (6)', target: 'Liverpool Port', value: 2 },
+
+      /*---------- 1861-1895 ----------*/
+      { source: '1861-1895 (2847)', target: 'Military Industry (412)', value: 412 },
+      { source: '1861-1895 (2847)', target: 'Industrial Site (308)', value: 308 },
+      { source: '1861-1895 (2847)', target: 'Cultural Venue (276)', value: 276 },
+      { source: '1861-1895 (2847)', target: 'Religious Site (259)', value: 259 },
+      { source: '1861-1895 (2847)', target: 'Port City (198)', value: 198 },
+
+      { source: 'Military Industry (412)', target: 'Krupp Gun Factory-1861', value: 85 },
+      { source: 'Military Industry (412)', target: 'Vulcan Shipyard-1861', value: 68 },
+      { source: 'Military Industry (412)', target: 'Armstrong Shipyard-1861', value: 52 },
+      { source: 'Military Industry (412)', target: 'Toulon Shipyard and Arsenal-1861', value: 45 },
+      { source: 'Military Industry (412)', target: 'Berlin Kassel Camp-1861', value: 42 },
+
+      { source: 'Industrial Site (308)', target: 'Osaka Mint-1861', value: 65 },
+      { source: 'Industrial Site (308)', target: 'Shanghai Manufacturing Bureau-1861', value: 58 },
+      { source: 'Industrial Site (308)', target: 'Chicago Sawmill-1861', value: 52 },
+      { source: 'Industrial Site (308)', target: 'Krupp Gun Factory-1861', value: 48 },
+      { source: 'Industrial Site (308)', target: 'Vulcan Shipyard-1861', value: 42 },
+
+      { source: 'Cultural Venue (276)', target: 'Paris Jardin des Plantes-1861', value: 62 },
+      { source: 'Cultural Venue (276)', target: 'London Zoological Gardens-1861', value: 55 },
+      { source: 'Cultural Venue (276)', target: 'Paris Wax Museum-1861', value: 48 },
+      { source: 'Cultural Venue (276)', target: 'Berlin Wax Museum-1861', value: 42 },
+      { source: 'Cultural Venue (276)', target: 'London Crystal Palace-1861', value: 38 },
+
+      { source: 'Religious Site (259)', target: 'Paris Pantheon-1861', value: 58 },
+      { source: 'Religious Site (259)', target: 'London St. Paul\'s Cathedral-1861', value: 52 },
+      { source: 'Religious Site (259)', target: 'Cologne Cathedral-1861', value: 45 },
+      { source: 'Religious Site (259)', target: 'Rome Colosseum-1861', value: 42 },
+      { source: 'Religious Site (259)', target: 'Venice St. Mark\'s Basilica-1861', value: 38 },
+
+      { source: 'Port City (198)', target: 'Marseille Port-1861', value: 48 },
+      { source: 'Port City (198)', target: 'Liverpool Port-1861', value: 42 },
+      { source: 'Port City (198)', target: 'Yokohama Port-1861', value: 38 },
+      { source: 'Port City (198)', target: 'Shanghai Port-1861', value: 35 },
+      { source: 'Port City (198)', target: 'Hong Kong Port-1861', value: 32 },
+
+      /*---------- 1896-1911 ----------*/
+      { source: '1896-1911 (1616)', target: 'Industrial Site (285)', value: 285 },
+      { source: '1896-1911 (1616)', target: 'Educational Institution (241)', value: 241 },
+      { source: '1896-1911 (1616)', target: 'Military Industry (218)', value: 218 },
+      { source: '1896-1911 (1616)', target: 'Cultural Venue (202)', value: 202 },
+      { source: '1896-1911 (1616)', target: 'Religious Site (156)', value: 156 },
+
+      { source: 'Industrial Site (285)', target: 'Krupp Gun Factory-1896', value: 68 },
+      { source: 'Industrial Site (285)', target: 'Osaka Mint-1896', value: 58 },
+      { source: 'Industrial Site (285)', target: 'Tokyo Artillery Factory-1896', value: 52 },
+      { source: 'Industrial Site (285)', target: 'Berlin Siemens Motor Factory-1896', value: 48 },
+      { source: 'Industrial Site (285)', target: 'Shanghai Manufacturing Bureau-1896', value: 42 },
+
+      { source: 'Educational Institution (241)', target: 'Tokyo University-1896', value: 62 },
+      { source: 'Educational Institution (241)', target: 'Berlin University-1896', value: 55 },
+      { source: 'Educational Institution (241)', target: 'Paris Sorbonne University-1896', value: 48 },
+      { source: 'Educational Institution (241)', target: 'Oxford University-1896', value: 42 },
+      { source: 'Educational Institution (241)', target: 'Kyoto Imperial University-1896', value: 38 },
+
+      { source: 'Military Industry (218)', target: 'Krupp Gun Factory-1896', value: 58 },
+      { source: 'Military Industry (218)', target: 'Vulcan Shipyard-1896', value: 52 },
+      { source: 'Military Industry (218)', target: 'Osaka Kawasaki Ironworks-1896', value: 48 },
+      { source: 'Military Industry (218)', target: 'Tokyo Artillery Factory-1896', value: 42 },
+      { source: 'Military Industry (218)', target: 'Shanghai Manufacturing Bureau-1896', value: 38 },
+
+      { source: 'Cultural Venue (202)', target: 'Tokyo Imperial Museum-1896', value: 55 },
+      { source: 'Cultural Venue (202)', target: 'Paris Military Museum-1896', value: 48 },
+      { source: 'Cultural Venue (202)', target: 'Berlin Wax Museum-1896', value: 42 },
+      { source: 'Cultural Venue (202)', target: 'Paris Jardin des Plantes-1896', value: 38 },
+      { source: 'Cultural Venue (202)', target: 'London Zoological Gardens-1896', value: 35 },
+
+      { source: 'Religious Site (156)', target: 'Paris Pantheon-1896', value: 48 },
+      { source: 'Religious Site (156)', target: 'Tokyo Yasukuni Shrine-1896', value: 42 },
+      { source: 'Religious Site (156)', target: 'Cologne Cathedral-1896', value: 38 },
+      { source: 'Religious Site (156)', target: 'London St. Paul\'s Cathedral-1896', value: 35 },
+      { source: 'Religious Site (156)', target: 'Rome Colosseum-1896', value: 32 }
+    ]
+  }
+};
