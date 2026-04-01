@@ -14,4 +14,4 @@ The primary textual sources for this study were derived from two series “Going
 
     (6) Time.xlsx:Comparison between ancient time and modern time
 
-2.Figures 2 to 9 are the visualization results of the analysis (using e-chart)
+2.Figures 2 to 9 are the visualization results of the analysis (Visualization using echart)
