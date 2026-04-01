@@ -1,6 +1,6 @@
 The primary textual sources for this study were derived from two series “Going to the World” (走向世界丛书)" edited by China’s famous historian Mr. Zhong Shuhe(钟叔河). Published by Yuelu Press, the book series are a monumental collection of Chinese travel writings (including diaries, travelogues, and reports) from 1840 to 1911 and documents the early experiences of Chinese intellectuals as they began to travel and explore the world. The First Series (1980–1986) consists of 35 Volumes with the Second Series (2017) up to 65 Volumes.
 
-1.	Datasets for the study consist of four types
+1.	Datasets for the study consist of six types
    
     (1)	Landmarks.xlsx: Overseas Tour data
 
